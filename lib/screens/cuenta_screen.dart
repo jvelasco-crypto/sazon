@@ -25,6 +25,16 @@ class CuentaScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Mi cuenta'),
         actions: [
+          IconButton(
+            tooltip: 'Acerca de y licencias',
+            icon: const Icon(Icons.info_outline),
+            onPressed: () => showLicensePage(
+              context: context,
+              applicationName: 'Sazón',
+              applicationVersion: '1.0.0',
+              applicationLegalese: 'Recetas e imágenes: TheMealDB (themealdb.com).',
+            ),
+          ),
           Obx(
             () => auth.estaAutenticado
                 ? IconButton(tooltip: 'Cerrar sesión', icon: const Icon(Icons.logout), onPressed: auth.cerrarSesion)
