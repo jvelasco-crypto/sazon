@@ -16,12 +16,7 @@ class RespuestaAsistente {
 /// las recetas de la categoría que se está viendo) y el token de la sesión en la cabecera.
 class AsistenteService {
   AsistenteService(this._api, {Dio? dio})
-      : _dio = dio ??
-            Dio(BaseOptions(
-              baseUrl: ApiConfig.proxyUrl,
-              connectTimeout: const Duration(seconds: 10),
-              receiveTimeout: const Duration(seconds: 20),
-            ));
+    : _dio = dio ?? Dio(BaseOptions(baseUrl: ApiConfig.proxyUrl, connectTimeout: const Duration(seconds: 10), receiveTimeout: const Duration(seconds: 20)));
 
   final ApiClient _api;
   final Dio _dio;

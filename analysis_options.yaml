@@ -31,3 +31,7 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+
+# Ancho de línea del formateador (el código usa líneas de hasta ~160 columnas).
+formatter:
+  page_width: 160

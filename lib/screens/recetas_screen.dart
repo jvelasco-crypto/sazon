@@ -50,9 +50,11 @@ class _RecetasScreenState extends State<RecetasScreen> {
               decoration: InputDecoration(
                 hintText: 'Buscar recetas (en inglés, por ejemplo «pasta»)',
                 prefixIcon: const Icon(Icons.search),
-                suffixIcon: Obx(() => c.busqueda.value.isEmpty
-                    ? const SizedBox.shrink()
-                    : IconButton(tooltip: 'Limpiar búsqueda', icon: const Icon(Icons.close), onPressed: _limpiarBusqueda)),
+                suffixIcon: Obx(
+                  () => c.busqueda.value.isEmpty
+                      ? const SizedBox.shrink()
+                      : IconButton(tooltip: 'Limpiar búsqueda', icon: const Icon(Icons.close), onPressed: _limpiarBusqueda),
+                ),
                 filled: true,
                 fillColor: Colors.white,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: BorderSide.none),
@@ -60,13 +62,15 @@ class _RecetasScreenState extends State<RecetasScreen> {
             ),
           ),
           Obx(() => c.busqueda.value.isNotEmpty || c.categorias.isEmpty ? const SizedBox(height: AppSpacing.sm) : _chips()),
-          Obx(() => c.desdeCache.value
-              ? MaterialBanner(
-                  leading: const Icon(Icons.cloud_off),
-                  content: Text('Sin conexión: recetas guardadas (última actualización: ${c.ultimaSincronizacion})'),
-                  actions: [TextButton(onPressed: c.cargar, child: const Text('Reintentar'))],
-                )
-              : const SizedBox.shrink()),
+          Obx(
+            () => c.desdeCache.value
+                ? MaterialBanner(
+                    leading: const Icon(Icons.cloud_off),
+                    content: Text('Sin conexión: recetas guardadas (última actualización: ${c.ultimaSincronizacion})'),
+                    actions: [TextButton(onPressed: c.cargar, child: const Text('Reintentar'))],
+                  )
+                : const SizedBox.shrink(),
+          ),
           Expanded(child: Obx(_cuerpo)),
         ],
       ),
@@ -83,11 +87,7 @@ class _RecetasScreenState extends State<RecetasScreen> {
           for (final cat in c.categorias)
             Padding(
               padding: const EdgeInsets.only(right: AppSpacing.sm),
-              child: ChoiceChip(
-                label: Text(cat),
-                selected: c.categoria.value == cat,
-                onSelected: (_) => c.elegirCategoria(cat),
-              ),
+              child: ChoiceChip(label: Text(cat), selected: c.categoria.value == cat, onSelected: (_) => c.elegirCategoria(cat)),
             ),
         ],
       ),

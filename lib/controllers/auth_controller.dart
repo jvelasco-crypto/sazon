@@ -7,9 +7,7 @@ import '../services/secure_token_storage.dart';
 /// Estado de la sesión de toda la app: el controller guarda el estado y `Obx` reconstruye
 /// las pantallas. `usuario` es null cuando no hay sesión.
 class AuthController extends GetxController {
-  AuthController({ApiClient? api, SecureTokenStorage? almacen})
-      : _api = api ?? Get.find<ApiClient>(),
-        _almacen = almacen ?? SecureTokenStorage();
+  AuthController({ApiClient? api, SecureTokenStorage? almacen}) : _api = api ?? Get.find<ApiClient>(), _almacen = almacen ?? SecureTokenStorage();
 
   final ApiClient _api;
   final SecureTokenStorage _almacen;
@@ -148,5 +146,4 @@ class AuthController extends GetxController {
     final r = await _api.get('/usuarios/me');
     usuario.value = Usuario.fromJson(Map<String, dynamic>.from(r.data as Map));
   }
-
 }

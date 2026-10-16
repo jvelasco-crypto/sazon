@@ -4,8 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 /// Android, Keychain en iOS) Hive y SharedPreferences guardan en
 /// claro: aquí el sistema cifra el valor. Solo tres operaciones.
 class SecureTokenStorage {
-  SecureTokenStorage([FlutterSecureStorage? almacen])
-      : _almacen = almacen ?? const FlutterSecureStorage();
+  SecureTokenStorage([FlutterSecureStorage? almacen]) : _almacen = almacen ?? const FlutterSecureStorage();
 
   static const _clave = 'access_token';
   final FlutterSecureStorage _almacen;

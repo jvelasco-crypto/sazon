@@ -8,12 +8,7 @@ import 'api_exception.dart';
 /// el token de la persona, así que no pasa por los interceptores del backend.
 class RecetasApiService {
   RecetasApiService({Dio? dio})
-      : _dio = dio ??
-            Dio(BaseOptions(
-              baseUrl: ApiConfig.recetasUrl,
-              connectTimeout: const Duration(seconds: 15),
-              receiveTimeout: const Duration(seconds: 15),
-            ));
+    : _dio = dio ?? Dio(BaseOptions(baseUrl: ApiConfig.recetasUrl, connectTimeout: const Duration(seconds: 15), receiveTimeout: const Duration(seconds: 15)));
 
   final Dio _dio;
 
@@ -25,8 +20,7 @@ class RecetasApiService {
     return lista.map((c) => '${(c as Map)['strCategory']}').where((c) => c.isNotEmpty).toList();
   }
 
-  Future<List<RecetaResumen>> porCategoria(String categoria) =>
-      _lista('/filter.php', {'c': categoria});
+  Future<List<RecetaResumen>> porCategoria(String categoria) => _lista('/filter.php', {'c': categoria});
 
   Future<List<RecetaResumen>> buscar(String texto) => _lista('/search.php', {'s': texto});
 

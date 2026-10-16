@@ -21,12 +21,10 @@ class ResenasService {
   }
 
   Future<Resena> crear({required String recetaId, required String recetaNombre, required int calificacion, required String comentario}) async {
-    final r = await _api.post('/resenas/', data: {
-      'receta_id': recetaId,
-      'receta_nombre': recetaNombre,
-      'calificacion': calificacion,
-      'comentario': comentario,
-    });
+    final r = await _api.post(
+      '/resenas/',
+      data: {'receta_id': recetaId, 'receta_nombre': recetaNombre, 'calificacion': calificacion, 'comentario': comentario},
+    );
     return Resena.fromJson(Map<String, dynamic>.from(r.data as Map));
   }
 
@@ -38,6 +36,5 @@ class ResenasService {
 
   Future<void> eliminar(int id) => _api.delete('/resenas/$id');
 
-  List<Resena> _lista(dynamic datos) =>
-      datos is List ? datos.map((e) => Resena.fromJson(Map<String, dynamic>.from(e as Map))).toList() : [];
+  List<Resena> _lista(dynamic datos) => datos is List ? datos.map((e) => Resena.fromJson(Map<String, dynamic>.from(e as Map))).toList() : [];
 }

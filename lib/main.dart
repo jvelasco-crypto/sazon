@@ -62,11 +62,7 @@ class SazonApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
       locale: const Locale('es', 'EC'),
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      localizationsDelegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
       supportedLocales: const [Locale('es', 'EC'), Locale('en', 'US')],
       home: const RaizScreen(),
     );
@@ -88,10 +84,7 @@ class _RaizScreenState extends State<RaizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _indice,
-        children: const [RecetasScreen(), FavoritosScreen(), AsistenteScreen(), CuentaScreen()],
-      ),
+      body: IndexedStack(index: _indice, children: const [RecetasScreen(), FavoritosScreen(), AsistenteScreen(), CuentaScreen()]),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _indice,
         onDestinationSelected: (i) => setState(() => _indice = i),

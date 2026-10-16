@@ -50,11 +50,17 @@ class _AsistenteScreenState extends State<AsistenteScreen> {
             Container(
               padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(color: colores.secondaryContainer, borderRadius: BorderRadius.circular(12)),
-              child: Row(children: [
-                const Icon(Icons.info_outline),
-                const SizedBox(width: AppSpacing.sm),
-                Expanded(child: Text('Sugerencia de IA: revisa la receta antes de cocinar. Busca entre las recetas de «${recetas.busqueda.value.isEmpty ? recetas.categoria.value : recetas.busqueda.value}».')),
-              ]),
+              child: Row(
+                children: [
+                  const Icon(Icons.info_outline),
+                  const SizedBox(width: AppSpacing.sm),
+                  Expanded(
+                    child: Text(
+                      'Sugerencia de IA: revisa la receta antes de cocinar. Busca entre las recetas de «${recetas.busqueda.value.isEmpty ? recetas.categoria.value : recetas.busqueda.value}».',
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: AppSpacing.lg),
             TextField(
@@ -68,17 +74,12 @@ class _AsistenteScreenState extends State<AsistenteScreen> {
             Wrap(
               spacing: AppSpacing.sm,
               runSpacing: AppSpacing.sm,
-              children: [
-                for (final s in _sugerencias)
-                  ActionChip(label: Text(s), onPressed: c.cargando.value ? null : () => _preguntar(s)),
-              ],
+              children: [for (final s in _sugerencias) ActionChip(label: Text(s), onPressed: c.cargando.value ? null : () => _preguntar(s))],
             ),
             const SizedBox(height: AppSpacing.md),
             FilledButton.icon(
               onPressed: c.cargando.value ? null : _preguntar,
-              icon: c.cargando.value
-                  ? const SizedBox(height: 18, width: 18, child: CircularProgressIndicator(strokeWidth: 2))
-                  : const Icon(Icons.auto_awesome),
+              icon: c.cargando.value ? const SizedBox(height: 18, width: 18, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.auto_awesome),
               label: const Text('Preguntar'),
             ),
             const SizedBox(height: AppSpacing.lg),

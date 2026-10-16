@@ -29,7 +29,13 @@ class ErrorPantallaView extends StatelessWidget {
                   Text(
                     'Esta pantalla tuvo un problema',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontFamily: 'Roboto', fontSize: 18, fontWeight: FontWeight.w600, color: Color(0xFF0E2841), decoration: TextDecoration.none),
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF0E2841),
+                      decoration: TextDecoration.none,
+                    ),
                   ),
                   SizedBox(height: 8),
                   Text(

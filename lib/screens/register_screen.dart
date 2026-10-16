@@ -59,24 +59,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
               TextFormField(
                 controller: _password,
                 obscureText: true,
-                decoration: const InputDecoration(
-                    labelText: 'Contraseña (8 a 72 caracteres)', border: OutlineInputBorder()),
+                decoration: const InputDecoration(labelText: 'Contraseña (8 a 72 caracteres)', border: OutlineInputBorder()),
                 validator: Validadores.password,
               ),
               const SizedBox(height: AppSpacing.md),
-              Obx(() => _auth.mensajeError.value.isEmpty
-                  ? const SizedBox.shrink()
-                  : Padding(
-                      padding: const EdgeInsets.only(bottom: AppSpacing.md),
-                      child: Text(_auth.mensajeError.value,
-                          style: TextStyle(color: Theme.of(context).colorScheme.error)),
-                    )),
-              Obx(() => FilledButton(
-                    onPressed: _auth.cargando.value ? null : _enviar,
-                    child: _auth.cargando.value
-                        ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2))
-                        : const Text('Crear cuenta'),
-                  )),
+              Obx(
+                () => _auth.mensajeError.value.isEmpty
+                    ? const SizedBox.shrink()
+                    : Padding(
+                        padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                        child: Text(_auth.mensajeError.value, style: TextStyle(color: Theme.of(context).colorScheme.error)),
+                      ),
+              ),
+              Obx(
+                () => FilledButton(
+                  onPressed: _auth.cargando.value ? null : _enviar,
+                  child: _auth.cargando.value
+                      ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2))
+                      : const Text('Crear cuenta'),
+                ),
+              ),
             ],
           ),
         ),

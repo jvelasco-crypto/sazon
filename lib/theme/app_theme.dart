@@ -23,7 +23,11 @@ class AppTheme {
         bodyMedium: TextStyle(fontSize: 14, color: Color(0xFF2A2A2A)),
         bodySmall: TextStyle(fontSize: 12),
       ),
-      cardTheme: CardThemeData(elevation: 1, clipBehavior: Clip.antiAlias, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14))),
+      cardTheme: CardThemeData(
+        elevation: 1,
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
       chipTheme: ChipThemeData(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(backgroundColor: terracota, foregroundColor: Colors.white, minimumSize: const Size(48, 48)),

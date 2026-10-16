@@ -25,9 +25,11 @@ class CuentaScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Mi cuenta'),
         actions: [
-          Obx(() => auth.estaAutenticado
-              ? IconButton(tooltip: 'Cerrar sesión', icon: const Icon(Icons.logout), onPressed: auth.cerrarSesion)
-              : const SizedBox.shrink()),
+          Obx(
+            () => auth.estaAutenticado
+                ? IconButton(tooltip: 'Cerrar sesión', icon: const Icon(Icons.logout), onPressed: auth.cerrarSesion)
+                : const SizedBox.shrink(),
+          ),
         ],
       ),
       body: Obx(() {
@@ -48,9 +50,16 @@ class CuentaScreen extends StatelessWidget {
               const SizedBox(height: AppSpacing.sm),
               switch (mis.estado.value) {
                 EstadoCarga.cargando => const SizedBox(height: 160, child: LoadingView(mensaje: 'Cargando tus reseñas...')),
-                EstadoCarga.error => SizedBox(height: 240, child: ErrorView(mensaje: mis.mensajeError.value, onReintentar: mis.cargar)),
-                EstadoCarga.vacio => const SizedBox(height: 200, child: EmptyView(icono: Icons.rate_review_outlined, mensaje: 'Todavía no escribiste reseñas.')),
-                EstadoCarga.listo => Column(children: [
+                EstadoCarga.error => SizedBox(
+                  height: 240,
+                  child: ErrorView(mensaje: mis.mensajeError.value, onReintentar: mis.cargar),
+                ),
+                EstadoCarga.vacio => const SizedBox(
+                  height: 200,
+                  child: EmptyView(icono: Icons.rate_review_outlined, mensaje: 'Todavía no escribiste reseñas.'),
+                ),
+                EstadoCarga.listo => Column(
+                  children: [
                     for (final r in mis.resenas)
                       Card(
                         child: ListTile(
@@ -58,12 +67,17 @@ class CuentaScreen extends StatelessWidget {
                           subtitle: Text(r.comentario, maxLines: 2, overflow: TextOverflow.ellipsis),
                           trailing: Estrellas(valor: r.calificacion, tamano: 14),
                           onTap: () async {
-                            await Get.to(() => DetalleScreen(receta: RecetaResumen(id: r.recetaId, nombre: r.recetaNombre, foto: '')));
+                            await Get.to(
+                              () => DetalleScreen(
+                                receta: RecetaResumen(id: r.recetaId, nombre: r.recetaNombre, foto: ''),
+                              ),
+                            );
                             mis.cargar();
                           },
                         ),
                       ),
-                  ]),
+                  ],
+                ),
               },
             ],
           ),

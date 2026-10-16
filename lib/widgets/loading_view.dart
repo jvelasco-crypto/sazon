@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/app_theme.dart';
 
 /// Estado de carga reutilizable: toda pantalla que espera datos muestra este mismo widget.

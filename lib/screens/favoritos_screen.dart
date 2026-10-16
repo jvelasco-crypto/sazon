@@ -14,9 +14,14 @@ class FavoritosScreen extends StatelessWidget {
     final c = Get.find<FavoritosController>();
     return Scaffold(
       appBar: AppBar(title: const Text('Favoritas')),
-      body: Obx(() => c.favoritos.isEmpty
-          ? const EmptyView(icono: Icons.favorite_border, mensaje: 'Aún no tienes favoritas.\nToca el corazón de una receta para guardarla aquí.')
-          : ListView.builder(itemCount: c.favoritos.length, itemBuilder: (_, i) => RecetaCard(receta: c.favoritos[i]))),
+      body: Obx(
+        () => c.favoritos.isEmpty
+            ? const EmptyView(icono: Icons.favorite_border, mensaje: 'Aún no tienes favoritas.\nToca el corazón de una receta para guardarla aquí.')
+            : ListView.builder(
+                itemCount: c.favoritos.length,
+                itemBuilder: (_, i) => RecetaCard(receta: c.favoritos[i]),
+              ),
+      ),
     );
   }
 }

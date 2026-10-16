@@ -16,14 +16,12 @@ class ApiException implements Exception {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return ApiException(
-            'El servidor tardó demasiado en responder. Revisa tu conexión e inténtalo de nuevo.');
+        return ApiException('El servidor tardó demasiado en responder. Revisa tu conexión e inténtalo de nuevo.');
       case DioExceptionType.badResponse:
         return _desdeRespuesta(e.response!, e.requestOptions.path);
       default:
         if (e.type == DioExceptionType.connectionError || e.error is SocketException) {
-          return ApiException(
-              'No hay conexión con el servidor. Revisa tu red y que el backend esté encendido.');
+          return ApiException('No hay conexión con el servidor. Revisa tu red y que el backend esté encendido.');
         }
         return ApiException('No se pudo completar la petición. Inténtalo de nuevo.');
     }

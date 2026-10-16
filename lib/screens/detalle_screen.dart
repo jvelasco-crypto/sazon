@@ -93,18 +93,18 @@ class _Contenido extends StatelessWidget {
             children: [
               Text(receta.nombre, style: tema.titleLarge),
               const SizedBox(height: AppSpacing.sm),
-              Wrap(spacing: AppSpacing.sm, children: [
-                if (receta.categoria.isNotEmpty) Chip(avatar: const Icon(Icons.category, size: 16), label: Text(receta.categoria)),
-                if (receta.origen.isNotEmpty) Chip(avatar: const Icon(Icons.public, size: 16), label: Text(receta.origen)),
-              ]),
+              Wrap(
+                spacing: AppSpacing.sm,
+                children: [
+                  if (receta.categoria.isNotEmpty) Chip(avatar: const Icon(Icons.category, size: 16), label: Text(receta.categoria)),
+                  if (receta.origen.isNotEmpty) Chip(avatar: const Icon(Icons.public, size: 16), label: Text(receta.origen)),
+                ],
+              ),
               const SizedBox(height: AppSpacing.lg),
               Text('Ingredientes', style: tema.titleMedium),
               const SizedBox(height: AppSpacing.sm),
               for (final (ing, medida) in receta.ingredientes)
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 2),
-                  child: Text('•  $ing${medida.isEmpty ? '' : ' — $medida'}'),
-                ),
+                Padding(padding: const EdgeInsets.symmetric(vertical: 2), child: Text('•  $ing${medida.isEmpty ? '' : ' — $medida'}')),
               const SizedBox(height: AppSpacing.lg),
               Text('Preparación', style: tema.titleMedium),
               const SizedBox(height: AppSpacing.sm),
@@ -166,14 +166,16 @@ class _ListaResenas extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [
-            Expanded(child: Text('Reseñas', style: tema.titleMedium)),
-            if (resumen?.promedio != null) ...[
-              Estrellas(valor: resumen!.promedio!.round()),
-              const SizedBox(width: AppSpacing.xs),
-              Text('${resumen.promedio} (${resumen.cantidad})'),
+          Row(
+            children: [
+              Expanded(child: Text('Reseñas', style: tema.titleMedium)),
+              if (resumen?.promedio != null) ...[
+                Estrellas(valor: resumen!.promedio!.round()),
+                const SizedBox(width: AppSpacing.xs),
+                Text('${resumen.promedio} (${resumen.cantidad})'),
+              ],
             ],
-          ]),
+          ),
           const SizedBox(height: AppSpacing.sm),
           FilledButton.icon(
             onPressed: () => Get.to(() => ResenaFormScreen(controller: c)),
@@ -182,27 +184,37 @@ class _ListaResenas extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           switch (c.estado.value) {
-            EstadoCarga.cargando => const Padding(padding: EdgeInsets.all(AppSpacing.lg), child: LoadingView(mensaje: 'Cargando reseñas...')),
-            EstadoCarga.error => SizedBox(height: 220, child: ErrorView(mensaje: c.mensajeError.value, onReintentar: c.cargar)),
+            EstadoCarga.cargando => const Padding(
+              padding: EdgeInsets.all(AppSpacing.lg),
+              child: LoadingView(mensaje: 'Cargando reseñas...'),
+            ),
+            EstadoCarga.error => SizedBox(
+              height: 220,
+              child: ErrorView(mensaje: c.mensajeError.value, onReintentar: c.cargar),
+            ),
             EstadoCarga.vacio => const Padding(
-                padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
-                child: Text('Todavía nadie la reseñó. ¡Sé la primera persona!'),
-              ),
-            EstadoCarga.listo => Column(children: [
+              padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
+              child: Text('Todavía nadie la reseñó. ¡Sé la primera persona!'),
+            ),
+            EstadoCarga.listo => Column(
+              children: [
                 for (final r in c.resenas)
                   Card(
                     child: ListTile(
-                      title: Row(children: [
-                        Expanded(child: Text(r.esMia ? 'Tú' : r.autorVisible, style: tema.titleMedium)),
-                        Estrellas(valor: r.calificacion, tamano: 16),
-                      ]),
+                      title: Row(
+                        children: [
+                          Expanded(child: Text(r.esMia ? 'Tú' : r.autorVisible, style: tema.titleMedium)),
+                          Estrellas(valor: r.calificacion, tamano: 16),
+                        ],
+                      ),
                       subtitle: Text(r.comentario),
                       trailing: r.esMia
                           ? IconButton(tooltip: 'Eliminar mi reseña', icon: const Icon(Icons.delete_outline), onPressed: () => _borrar(context, r))
                           : null,
                     ),
                   ),
-              ]),
+              ],
+            ),
           },
         ],
       );

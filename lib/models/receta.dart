@@ -6,16 +6,12 @@ class RecetaResumen {
   const RecetaResumen({required this.id, required this.nombre, required this.foto});
 
   /// Lectura defensiva: un campo faltante no rompe la lista.
-  factory RecetaResumen.fromJson(Map<String, dynamic> json) => RecetaResumen(
-        id: '${json['idMeal'] ?? ''}',
-        nombre: (json['strMeal'] as String?) ?? 'Receta sin nombre',
-        foto: (json['strMealThumb'] as String?) ?? '',
-      );
+  factory RecetaResumen.fromJson(Map<String, dynamic> json) =>
+      RecetaResumen(id: '${json['idMeal'] ?? ''}', nombre: (json['strMeal'] as String?) ?? 'Receta sin nombre', foto: (json['strMealThumb'] as String?) ?? '');
 
   Map<String, dynamic> toMap() => {'id': id, 'nombre': nombre, 'foto': foto};
 
-  factory RecetaResumen.fromMap(Map map) =>
-      RecetaResumen(id: '${map['id']}', nombre: '${map['nombre']}', foto: '${map['foto'] ?? ''}');
+  factory RecetaResumen.fromMap(Map map) => RecetaResumen(id: '${map['id']}', nombre: '${map['nombre']}', foto: '${map['foto'] ?? ''}');
 }
 
 /// Receta completa (`lookup.php`): ingredientes con su medida y los pasos.

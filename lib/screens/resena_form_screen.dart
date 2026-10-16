@@ -78,12 +78,12 @@ class _ResenaFormScreenState extends State<ResenaFormScreen> {
                 padding: const EdgeInsets.only(bottom: AppSpacing.md),
                 child: Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
               ),
-            Obx(() => FilledButton(
-                  onPressed: c.guardando.value ? null : _guardar,
-                  child: c.guardando.value
-                      ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2))
-                      : const Text('Guardar'),
-                )),
+            Obx(
+              () => FilledButton(
+                onPressed: c.guardando.value ? null : _guardar,
+                child: c.guardando.value ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2)) : const Text('Guardar'),
+              ),
+            ),
           ],
         ),
       ),

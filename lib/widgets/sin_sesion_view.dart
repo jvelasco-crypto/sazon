@@ -27,7 +27,11 @@ class SinSesionView extends StatelessWidget {
               Text(mensaje, textAlign: TextAlign.center),
               if (auth.avisoSesion.value.isNotEmpty) ...[
                 const SizedBox(height: AppSpacing.md),
-                Text(auth.avisoSesion.value, textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.error)),
+                Text(
+                  auth.avisoSesion.value,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Theme.of(context).colorScheme.error),
+                ),
               ],
               const SizedBox(height: AppSpacing.lg),
               FilledButton(onPressed: () => Get.to(() => const LoginScreen()), child: const Text('Iniciar sesión')),

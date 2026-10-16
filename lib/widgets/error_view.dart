@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/app_theme.dart';
 
 /// Estado de error reutilizable Incluye un botón de reintentar
@@ -20,11 +21,7 @@ class ErrorView extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             Text(mensaje, textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: AppSpacing.md),
-            ElevatedButton.icon(
-              onPressed: onReintentar,
-              icon: const Icon(Icons.refresh),
-              label: const Text('Reintentar'),
-            ),
+            ElevatedButton.icon(onPressed: onReintentar, icon: const Icon(Icons.refresh), label: const Text('Reintentar')),
           ],
         ),
       ),

@@ -19,9 +19,8 @@ class ReporteErrores {
 
   /// Quita de un texto lo que NUNCA debe quedar en un registro: cabeceras
   /// `Bearer` y tokens JWT (tres partes separadas por puntos).
-  static String limpiar(String texto) => texto
-      .replaceAll(RegExp(r'Bearer\s+[A-Za-z0-9\-._~+/]+=*'), 'Bearer ***')
-      .replaceAll(RegExp(r'eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*'), '***');
+  static String limpiar(String texto) =>
+      texto.replaceAll(RegExp(r'Bearer\s+[A-Za-z0-9\-._~+/]+=*'), 'Bearer ***').replaceAll(RegExp(r'eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*'), '***');
 
   /// Guarda el error ya limpio. En una app real, aquí se enviaría a un servicio
   /// de monitoreo (por ejemplo, Crashlytics o Sentry) — con el mensaje limpio.
