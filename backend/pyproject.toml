@@ -1,0 +1,71 @@
+[project]
+name = "proyecto-curso-speckit"
+version = "0.1.0"
+description = "Control de gastos personales — reconstruido con Spec-Driven Development"
+authors = [
+    { name = "Jordan Murillo", email = "jordan.murillo@cedia.org.ec" }
+]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "alembic>=1.19.2",
+    "email-validator>=2.3.0",
+    "fastapi>=0.142.2",
+    "mcp[cli]>=2.2,<3",
+    "pwdlib[argon2]>=0.3.1",
+    "psycopg[binary]>=3.2",
+    "pydantic-settings>=2.15.0",
+    "pyjwt>=2.15.1",
+    "python-multipart>=0.0.32",
+    "sqlalchemy>=2.1.1",
+    "starlette>=1.7.0",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "app"
+module-root = ""
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-cov>=7.0.0",
+    "httpx2",
+    "ruff>=0.16.8",
+]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "error::DeprecationWarning",
+    "error::ResourceWarning",
+]
+
+[tool.coverage.run]
+source = ["app"]
+omit = [
+    "app/main.py",
+    "app/mcp/server.py",
+    "app/mcp/auth.py",
+    "app/logging_config.py",
+    "app/scripts/*",
+]
+
+[tool.coverage.report]
+# Artículo VII.3: umbral global del conjunto services+repositories+routers+utils.
+# El umbral de services/ (>=90%) se sigue verificando por lectura del reporte
+# --cov-report=term-missing, no lo puede expresar coverage.py a nivel de paquete.
+fail_under = 80
+
+[tool.ruff]
+exclude = [".venv", "alembic/versions"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+# E402: importa app.config después de código ejecutable, a propósito.
+# F401: usuario/gasto se importan solo para que Alembic detecte sus modelos.
+"alembic/env.py" = ["E402", "F401"]
