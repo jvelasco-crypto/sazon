@@ -59,7 +59,7 @@ Es la rúbrica de `final-project/rubric.md` convertida en preguntas que puedes c
 
 ## 9. Documentación y entrega (5 %)
 
-- [x] El `README.md` sigue la plantilla (`docs/README-plantilla.md`) y alguien que no conoce mi proyecto podría ejecutarlo.
+- [x] El `README.md` sigue la plantilla del curso (`docs/README-plantilla.md` de ExploraEC, sesión 10) y alguien que no conoce mi proyecto podría ejecutarlo.
 - [x] El repositorio tiene **historial real de commits** (no uno solo al final).
 - [ ] Hay un Release con el APK descargable, generado por GitHub Actions.
 - [ ] La entrega en Moodle incluye el enlace al repositorio, el enlace al Release y el README.
