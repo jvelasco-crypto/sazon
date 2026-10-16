@@ -56,7 +56,7 @@ class _RecetasScreenState extends State<RecetasScreen> {
                       : IconButton(tooltip: 'Limpiar búsqueda', icon: const Icon(Icons.close), onPressed: _limpiarBusqueda),
                 ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Theme.of(context).colorScheme.surfaceContainerLowest,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: BorderSide.none),
               ),
             ),

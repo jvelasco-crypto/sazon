@@ -61,6 +61,8 @@ class SazonApp extends StatelessWidget {
       title: 'Sazón',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
+      darkTheme: AppThemeOscuro.oscuro,
+      themeMode: ThemeMode.system,
       locale: const Locale('es', 'EC'),
       localizationsDelegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
       supportedLocales: const [Locale('es', 'EC'), Locale('en', 'US')],

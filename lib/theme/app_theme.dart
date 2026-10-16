@@ -37,6 +37,21 @@ class AppTheme {
   }
 }
 
+/// Tema oscuro (extensión opcional): misma semilla terracota con `Brightness.dark`.
+/// No fija colores de texto ni de fondo: Flutter genera la paleta oscura completa.
+extension AppThemeOscuro on AppTheme {
+  static ThemeData get oscuro {
+    final colorScheme = ColorScheme.fromSeed(seedColor: AppTheme.terracota, secondary: AppTheme.oliva, brightness: Brightness.dark);
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: colorScheme,
+      appBarTheme: const AppBarTheme(backgroundColor: AppTheme.cafe, foregroundColor: Colors.white, elevation: 0),
+      cardTheme: CardThemeData(elevation: 1, clipBehavior: Clip.antiAlias, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14))),
+      chipTheme: ChipThemeData(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+    );
+  }
+}
+
 /// Espaciados de toda la app, en vez de números sueltos en cada widget.
 class AppSpacing {
   AppSpacing._();

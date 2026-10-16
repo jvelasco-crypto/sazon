@@ -14,6 +14,10 @@ Proyecto Final del curso *Desarrolla Aplicaciones Móviles Robustas con Flutter 
 |---|---|---|---|
 | <img src="docs/capturas/04-busqueda.png" width="200"> | <img src="docs/capturas/05-favoritas.png" width="200"> | <img src="docs/capturas/08-cuenta.png" width="200"> | <img src="docs/capturas/09-error-backend-apagado.png" width="200"> |
 
+Extensión opcional: **modo oscuro**, que sigue la configuración del teléfono.
+
+<img src="docs/capturas/11-modo-oscuro.png" width="200">
+
 Errores del backend, cada uno con su código y su mensaje (`docs/scripts/demo-errores.sh`):
 
 <img src="docs/capturas/10-errores-http.png" width="820">
@@ -28,6 +32,7 @@ Errores del backend, cada uno con su código y su mensaje (`docs/scripts/demo-er
 | Funcionalidad remota y colaborativa | **Reseñas** (calificación de 1 a 5 y comentario) en el backend: crear, ver, editar y eliminar. Las reseñas de una receta las ve **cualquier usuario**; solo su autor puede modificarlas (403 para los demás). |
 | Asistente con IA sin secretos | Pantalla «Asistente» que habla con un **proxy propio** (`proxy/`). La clave de Gemini vive solo en el proxy. Sin clave, el proxy responde en modo reglas. |
 | Estado con GetX | Controllers para sesión, recetas, favoritas, detalle, reseñas, mis reseñas y asistente. Las pantallas solo leen y llaman al controller. |
+| Extensión opcional | Modo oscuro automático (sigue al sistema). |
 | Carga, vacío y error | En todas las pantallas con datos (`LoadingView`, `EmptyView`, `ErrorView` con «Reintentar»). Ninguna pantalla queda en blanco ni sin salida. |
 
 ## Cómo ejecutarla
